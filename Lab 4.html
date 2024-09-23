@@ -1,0 +1,106 @@
+<DOCTYPE html>
+    <html>
+        <head>
+            <h1 id="PageHeader">INST 377 - Lab 4</h1>
+            <title> Lab 4- JavaScript</title>
+        <head> 
+    <style>
+body{
+    background-color: wheat;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+    
+}
+
+.section{
+    background-color: #6F4E37;
+    border: 2px solid white; 
+    border-radius: 10px;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    width: 45%;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+.button{
+    background-color:black ;
+    color: rgb(255, 255, 255);
+    padding: 1px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    cursor:pointer;
+    border-radius: 5px;
+    width: 20%;
+}
+    </style>
+
+    <body>
+        <div class="container">
+            
+                <section class="section"> 
+                    <form id="AMSform">
+                    <label for="Name">Name:</label>
+                    <input type="text" id="Name" size="25" required>
+                    <button type="button" class="button" onclick="alertme()">Alert Me!</button>
+                </section>
+            </form>
+        
+        
+        <section class="section"> 
+            <button type="button" class="button" onclick="changecolor()">Change Color</button>
+        </section>
+
+        <section class="section"> 
+            <form id="textID">
+            <label for="TextID">Text Tester:</label>
+            <input type="text" id="TextTester" size="25" required>
+            <button type="button" class="button" onclick="validateText()">Validate Text</button>
+        </section>
+    </form>
+        
+        <section class="section"> 
+            <button type="button" class="button" onclick="AddText()">Add Text</button>
+        </section>
+    </div>
+    <script>
+        function alertme(){
+            const Name=document.getElementById('Name').value;
+            if (Name){
+                alert("Hi Name !");
+                document.getElementById('Name').value = '';  
+            }
+        }
+        function AddText(){
+           const header=document.getElementById("PageHeader");
+           if (!header.innerHTML.includes ("- Add Text")){
+            header.innerHTML +=" - Add Text";
+           }
+        }
+        function changecolor() {
+                if (document.body.style.backgroundColor == 'white') {
+                    document.body.style.backgroundColor = 'wheat';
+                } else {
+                    document.body.style.backgroundColor = 'white';
+                }
+            }
+
+            function validateText() {
+            const TextTester = document.getElementById("TextTester").value;
+           var validation = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/;
+
+            if (validation.test(TextTester)) {
+                alert("Well done ! My system can read the special character you inputted");
+            } else {
+                alert("There are no special characters, please try again.");
+            }
+            document.getElementById("TextTester").value = '';
+        }
+        
+    </script>
+    </body>
+</html>
